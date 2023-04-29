@@ -9,6 +9,10 @@
     <title>Angularjs for noobs</title>
 </head>
 <body ng-controller="FirstController">
+    <input type="text" ng-model="nuevoComentario.comentario" placeholder="comentario">
+    <br>
+    <input type="text" ng-model="nuevoComentario.username" placeholder="username">
+    <button ng-click="agregarComentario()">Agregar comentario</button>
     <h3>Comentarios</h3>
     <ul>
         <li ng-repeat="comentario in comentarios">
