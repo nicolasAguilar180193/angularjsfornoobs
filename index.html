@@ -9,6 +9,11 @@
     <title>Angularjs for noobs</title>
 </head>
 <body ng-controller="FirstController">
-    {{ "Hola " +  nombre }}
+    <h3>Comentarios</h3>
+    <ul>
+        <li ng-repeat="comentario in comentarios">
+            {{ comentario.comentario }} - <strong>{{ comentario.username }}</strong>
+        </li>
+    </ul>
 </body>
 </html>
