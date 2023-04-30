@@ -1,5 +1,5 @@
 var app = angular.module("MyFirstApp", []);
-app.controller("FirstController", function($scope) {
+app.controller("FirstController", ["$scope", function($scope) {
     $scope.nuevoComentario = {};
     $scope.comentarios = [
         {
@@ -16,4 +16,4 @@ app.controller("FirstController", function($scope) {
         $scope.comentarios.push($scope.nuevoComentario);
         $scope.nuevoComentario = {};
     }
-})
+}])
