@@ -149,3 +149,44 @@ app.service('CalcService', function(MathService) {
 });
 
 ```
+
+
+#### Provider
+
+Es el caso mas generico de servicio, ademas de generar un servicio inyectable durante la fase de ejecucion y tener la posibilidad 
+de inyectar dependencias en su definicion, proporciona una API para la confiiguracion de este servicio antes de que inicie la aplicacion.
+Ejemplo: 
+
+```javascript
+myApp.provider('logger', function(){
+  var logToConsole = false;
+
+  this.enableConsole = function(flag){
+    logToConsole = flag;
+  };
+
+  this.$get = function(){
+    return { 
+debug: function(msg){  if(logToConsole){ console.log(msg);} }
+    };
+  };
+})
+```
+
+Para configurar el servicio logger, tendríamos que usar su API en la fase de configuración, inyectando el loggerProvider:
+
+```javascript
+myApp.config(['loggerProvider', function(loggerProvider){
+  loggerProvider.enableConsole(true);
+}])
+
+```
+
+Luego en la fase de ejecución, utilizaríamos el servicio logger del modo habitual:
+
+```javascript
+myApp.run(['logger', function(logger){
+    logger.debug('Hello world');
+}])
+
+```
