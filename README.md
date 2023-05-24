@@ -190,3 +190,34 @@ myApp.run(['logger', function(logger){
 }])
 
 ```
+
+
+### Peticiones a servidores con $http
+
+"$http" es un servicio del nucleo de angular que permite la comunicacion con servidores HTTP.
+
+```javascript
+$http({
+  method: 'GET',
+  url: '/someUrl'
+}).then((response => ) {
+    // Esta es una funcion callback que sera llamada una vez la respuesta este disponible
+  }, (error) => {
+    // Esta cuando ocurra un error o el servidor retorne un status de error.
+  });
+
+// O un POST enviando datos
+
+$http({
+  method: 'POST',
+  url: '/someUrl'.
+   data: { 
+      nombre: 'Nicolas',
+      apellido: 'Aguilar'
+   }
+   }).then((response => ) {
+    // Esta es una funcion callback que sera llamada una vez la respuesta este disponible
+  }, (error) => {
+    // Esta cuando ocurra un error o el servidor retorne un status de error.
+  });
+```
